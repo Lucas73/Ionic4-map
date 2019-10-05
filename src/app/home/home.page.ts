@@ -9,14 +9,14 @@ declare var google: any;
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
- @ViewChild('Map', { static: false }) mapElement: ElementRef;
+ @ViewChild('map', { static: false }) mapElement: ElementRef;
 
   map: any;
     mapOptions: any;
     location = {lat: null, lng: null};
     markerOptions: any = {position: null, map: null, title: null};
     marker: any;
-    apiKey: any = 'AIzaSyBOLDgXn-_WscB9xUaIDFiaPq2cDIZYl6U';
+    apiKey: any = '';//<---- Quito mi Api Key para no subirla a Git Hub
 
   constructor(public geolocation: Geolocation) {
 
@@ -43,8 +43,6 @@ export class HomePage {
 
     setTimeout(() => {
       this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
-      
-      /*Opciones del marcador*/
       this.markerOptions.position = this.location;
       this.markerOptions.map = this.map;
       this.markerOptions.title = 'My Location';
